@@ -62,10 +62,18 @@ def next_question():
         show_question()
     else:
         st.write("---")
-        if st.session_state.score == len(marvel_quiz_data.marvel_quiz_data):  # Check if user scored 5/5
-            st.success("🎉 **Congratulations! You are a true Marvel fan!**")
+        score = st.session_state.score
+        max_score = len(marvel_quiz_data.marvel_quiz_data)
+        result = ""
+        if score == max_score:
+            result = "true Marvel fan! 🌟"
+        elif score >= 9:
+            result = "superfan! 👍"
+        elif score >= 7:
+            result = "fan! 😊"
         else:
-            st.success(f"🎉 **Quiz Complete! Your Score: {st.session_state.score}/{len(marvel_quiz_data.marvel_quiz_data)}**")
+            result = "casual viewer."
+        st.success(f"🎉 **Quiz Complete! Your Score: {score}/{max_score}. You are a {result}**")
         st.session_state.current_question = 0
         st.session_state.score = 0
 
