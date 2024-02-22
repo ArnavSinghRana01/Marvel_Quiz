@@ -1,6 +1,9 @@
 import streamlit as st
 import marvel_quiz_data
-
+st.set_page_config(
+    page_title="Marvel Quiz",
+    page_icon="🦸‍♂️"
+)
 # Define Marvel-themed colors
 marvel_red = "#E62429"
 marvel_blue = "#005EB8"
